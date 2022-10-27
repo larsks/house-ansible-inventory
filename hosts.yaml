@@ -1,0 +1,18 @@
+all:
+  vars:
+    ansible_network_cli_ssh_type: libssh
+  children:
+    routers:
+      hosts:
+        gw.house:
+          ansible_user: ubnt
+          ansible_network_os: community.network.edgeos
+          ansible_python_interpreter: /usr/bin/python2
+    switches:
+      hosts:
+        office-sw-0.house:
+        office-sw-1.house:
+      vars:
+        ansible_user: admin
+        ansible_network_os: community.network.edgeswitch
+        ansible_connection: ansible.netcommon.network_cli
